@@ -1,2 +1,2 @@
-# smIconHelper
-Icon Helper for ShowdMe
+# iconHelper
+Icon Helper for SVGs
