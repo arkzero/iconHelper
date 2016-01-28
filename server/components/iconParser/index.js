@@ -4,10 +4,13 @@
 
 'use strict';
 
-var SVG = require('svgutils').Svg;
+var express = require('express');
+var router = express.Router();
+var Svg = require('svgutils').Svg;
 
-module.exports.getIconsFromFile = function (req, res) {
-  SVG.fromSvgDocument('../../client/app/assets/showdme.svg', function (err, svg) {
+
+router.get('/', function (req, res) {
+  Svg.fromSvgDocument('../../client/app/assets/showdme.svg', function (err, svg) {
     if(err){
       throw new Error('SVG file not found or invalid');
     }
@@ -16,4 +19,4 @@ module.exports.getIconsFromFile = function (req, res) {
 
     res.status(200).json(json);
   });
-}
+});

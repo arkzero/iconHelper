@@ -7,9 +7,11 @@ function MainController($scope) {
 
 angular.module('smIconHelperApp')
   .controller('MainController', [
-    '$scope',
-    function ($scope) {
-
+    '$scope', 'Icons',
+    function ($scope, Icons) {
+      Icons.getAll().then(function (result) {
+        console.log(result);
+      })
     }
   ]);
 

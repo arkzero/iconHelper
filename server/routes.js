@@ -7,23 +7,14 @@
 import errors from './components/errors';
 import path from 'path';
 
-var SVG = require('svgutils').Svg;
-
 module.exports = function(app) {
 
   // Insert routes below
   //app.use('/api/icons', require('./api/icon'));
-  app.use('/api/icons').get(function (req, res) {
-    SVG.fromSvgDocument('../../client/app/assets/showdme.svg', function (err, svg) {
-      if(err){
-        throw new Error('SVG file not found or invalid');
-      }
+  app.route('/api/icons').get(function (req, res) {
+      res.status(200).json(["download", "edit", "delete", "video-file", "open-link", "settings", "open-in-browser", "pie-chart", "add-user", "cancel", "document", "image-file", "admin", "attach", "bar-chart", "binoculars", "opened-folder", "calendar", "decline", "checkmark", "collapse", "comment", "checked", "empty-box", "create-new", "dashboard", "collapse", "expand-arrow", "flag", "expand", "hide-sidemenu", "picture", "learning-path", "link", "location", "message", "microphone", "microphone-mute", "minus", "user-folder", "right", "notification", "rules", "play", "plus", "left", "print", "upload-to-cloud", "questions", "raise-hand", "record", "register", "request", "save", "schedule", "screen-rec", "screen-share", "search", "visible", "sent", "chat", "menu", "show-menu", "star", "outline-star", "pie-chart", "thumbs-up", "thumbs-down", "clock", "stopwatch", "unpublish", "invisible", "user", "group", "video-call", "video", "file", "trophy", "home", "check", "checklist", "skills", "activity", "coffee", "happy", "day", "month", "subscribe", "reading", "down-arrow", "reading", "student", "admin", "linkedin", "info", "people", "directory", "camera", "list-numbered", "list-view", "grid-view", "copy-item", "copy-link", "collapse-arrow", "quiz-list", "true-false", "multiple-choice", "todo-list", "stats", "checklist", "archive", "ios7-magical-scroll"]);
 
-      var json = svg.toJSON();
-
-      res.status(200).json(json);
-    });
-  })
+  });
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
